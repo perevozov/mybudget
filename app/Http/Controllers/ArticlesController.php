@@ -40,4 +40,23 @@ class ArticlesController extends Controller {
 
 		return redirect('articles');
 	}
+
+	public function edit($id)
+	{
+		$article = Article::findOrFail($id);
+
+		return view('articles.edit', compact('article'));
+	}
+
+	public function update($id)
+	{
+		$input = Request::all();
+		$article = Article::findOrFail($id);
+
+		$article->update($input);
+
+		return redirect('articles');
+	}
+
+
 }
