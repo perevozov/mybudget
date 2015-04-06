@@ -11,19 +11,5 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
-
-Route::get('about', 'PagesController@about');
-
-Route::get('articles', 'ArticlesController@index');
-Route::get('articles/create', 'ArticlesController@create');
-Route::get('articles/{id}', 'ArticlesController@show');
-
-Route::post('articles', 'ArticlesController@store');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::resource('articles', 'ArticlesController');
