@@ -8,4 +8,5 @@
 		@include('articles.form', ['submitButtonCaption' => 'Save changes'])
 	{!! Form::close() !!}
 
+	@include('errors.list')
 @stop

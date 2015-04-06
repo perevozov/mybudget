@@ -46,12 +46,11 @@ class ArticlesController extends Controller {
 		return view('articles.edit', compact('article'));
 	}
 
-	public function update($id)
+	public function update($id, ArticleStoreRequest $request)
 	{
-		$input = Request::all();
 		$article = Article::findOrFail($id);
 
-		$article->update($input);
+		$article->update($request->all());
 
 		return redirect('articles');
 	}
