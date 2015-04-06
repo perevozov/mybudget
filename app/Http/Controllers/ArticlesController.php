@@ -3,7 +3,7 @@
 use App\Article;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\ArticleStoreRequest;
 use Request;
 
 class ArticlesController extends Controller {
@@ -28,14 +28,12 @@ class ArticlesController extends Controller {
 		return view('articles.create');
 	}
 
-	public function store()
+	public function store(ArticleStoreRequest $request)
 	{
-		$input = Request::all();
-
 		Article::create([
-			'title' => Request::get('title'),
-			'body' => Request::get('body'),
-			'published_at' => Request::get('published_at'),
+			'title' => $request->get('title'),
+			'body' => $request->get('body'),
+			'published_at' => $request->get('published_at'),
 		]);
 
 		return redirect('articles');
