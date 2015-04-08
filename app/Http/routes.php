@@ -14,6 +14,10 @@
 Route::get('home', 'HomeController@index');
 Route::get('about', 'PagesController@about');
 
+Route::get('auth/test', function(){
+	return Auth::user()->id;
+});
+
 Route::resource('articles', 'ArticlesController');
 
 Route::controllers([

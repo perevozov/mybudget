@@ -8,6 +8,11 @@ use Request;
 
 class ArticlesController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('auth', ['except' => ['index', 'show']]);
+	}
+
 	public function index()
 	{
 		$articles = Article::published()->orderBy('created_at', 'desc')->get();
@@ -30,11 +35,9 @@ class ArticlesController extends Controller {
 
 	public function store(ArticleStoreRequest $request)
 	{
-		Article::create([
-			'title' => $request->get('title'),
-			'body' => $request->get('body'),
-			'published_at' => $request->get('published_at'),
-		]);
+		$article = new Article($request->only('title', 'body', 'published_at'));
+		$article->user_id = \Auth::user()->id;
+		$article->save();
 
 		return redirect('articles');
 	}
