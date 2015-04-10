@@ -10,8 +10,7 @@ class Article extends Model {
 	protected $fillable = [
 		'title', 
 		'body',
-		'published_at',
-		'user_id' //не уверен что так делать хорошо
+		'published_at'
 	];
 
 	protected $dates = [
@@ -29,6 +28,14 @@ class Article extends Model {
 		return $query->where('published_at', '<=', Carbon::now());
 	}
 
-	//
+	public function tags()
+	{
+		return $this->belongsToMany('App\Tag')->withTimestamps();
+	}
+
+	public function getTagListAttribute()
+	{
+		return $this->tags()->lists('id');
+	}
 
 }

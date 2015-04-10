@@ -24,7 +24,8 @@ class ArticleStoreRequest extends Request {
 		return [
 			'title' => 'required',
 			'body' => 'required',
-			'published_at' => 'required|date|date_format:d.m.Y'
+			'published_at' => 'required|date|date_format:d.m.Y',
+			'tags' => 'array'
 			//
 		];
 	}

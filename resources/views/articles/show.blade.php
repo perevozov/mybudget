@@ -8,4 +8,13 @@
 		{{ $article->body }}
 	</div>
 
+	@if(!$article->tags->isEmpty())
+		<h5>Tags:</h4>
+		<ul>
+			@foreach($article->tags as $tag)
+				<li>{{ $tag->name }}</li>
+			@endforeach
+		</ul>
+	@endif
+
 @endsection
