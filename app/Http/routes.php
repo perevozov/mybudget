@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function(){
+    return "tests";
+});
+
 Route::get('home', 'HomeController@index');
 Route::get('about', 'PagesController@about');
 

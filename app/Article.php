@@ -25,7 +25,7 @@ class Article extends Model {
 
 	public function scopePublished($query)
 	{
-		return $query->where('published_at', '<=', Carbon::now());
+        return $query->where('published_at', '<=', Carbon::now());
 	}
 
 	public function tags()
